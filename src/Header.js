@@ -3,9 +3,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import TextFieldsRoundedIcon from '@mui/icons-material/TextFieldsRounded';
 import './Header.css';
 
-const handleDragStop = () => this.props.update(this.value);
-
-export const Header = (isDarkTheme, changeTheme, changeFontSize) => {
+export const Header = (isDarkTheme, changeTheme, changeFontSize, handleDragStop) => {
     return (
         <AppBar position='static' className='header'>
               <Toolbar>
@@ -25,7 +23,7 @@ export const Header = (isDarkTheme, changeTheme, changeFontSize) => {
                     <Stack direction='row' spacing={0} alignItems="center">
                         <TextFieldsRoundedIcon fontSize='small'/>
                         <Slider size='small' defaultValue={50} aria-label="Letters Size" valueLabelDisplay='auto' color='icons'
-                        onChange={ changeFontSize } onDragStop={ handleDragStop } sx={{ width: 500 }}/>
+                        onChange={ changeFontSize } onChangeCommitted={ handleDragStop } sx={{ width: 500 }}/>
                         <TextFieldsRoundedIcon fontSize='large'/>
                     </Stack>
 

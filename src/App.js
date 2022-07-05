@@ -7,7 +7,7 @@ import { Header } from './Header';
 import { Bottom } from './Bottom';
 import Body from './Body';
 
-var fontSize = 50
+export var fontSize = 50
 
 const changeFontSize = (event, value) => {
     fontSize = value
@@ -17,16 +17,20 @@ const changeFontSize = (event, value) => {
 function App() {
     // The light theme is used by default
     const [isDarkTheme, setIsDarkTheme] = useState(false);
-
+    const [font, updateFont] = useState([])
     // This function is triggered when the Switch component is toggled
     const changeTheme = () => {
         setIsDarkTheme(!isDarkTheme);
     };
 
+    const handleDragStop = () => {
+        updateFont(!font)
+    };
+
   return (
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Stack direction='column'>
-            {Header(isDarkTheme, changeTheme, changeFontSize)}
+            {Header(isDarkTheme, changeTheme, changeFontSize, handleDragStop)}
             {Body(fontSize)}
             {Bottom()}
         </Stack>
