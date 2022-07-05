@@ -1,0 +1,15 @@
+.e-switch-wrapper.bar-color .e-switch-inner.e-switch-active,
+.e-switch-wrapper.bar-color:hover .e-switch-inner.e-switch-active .e-switch-on {
+  background-color: #4d841d;
+  border-color: #4d841d;
+}
+
+.e-switch-wrapper.bar-color .e-switch-inner,
+.e-switch-wrapper.bar-color .e-switch-off {
+  background-color: #e3165b;
+  border-color: #e3165b;
+}
+
+.e-switch-wrapper.bar-color .e-switch-handle {
+  background-color: #fff;
+}
