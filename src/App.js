@@ -8,7 +8,7 @@ import { Bottom } from './Bottom';
 import Body from './Body';
 import { useRef } from "react";
 
-export var fontSize = 25
+export var fontSize = 5
 
 function App() {
     // The light theme is used by default
