@@ -18,6 +18,8 @@ function App() {
     const [isGitOpen, setGit] = useState(false)
     const [isMvnOpen, setMvn] = useState(false)
     const [isOptOpen, setOpt] = useState(false)
+    // State variable to set users source code
+    const [userCode, setUserCode] = useState(``);
     const inputFile = useRef(null);
     const isOverlayOpen = [isFileOpen, isMvnOpen, isGitOpen, isOptOpen]
     const setOverlay = [setFile, setMvn, setGit, setOpt]
@@ -43,7 +45,7 @@ function App() {
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Stack direction='column'>
             {Header(isDarkTheme, changeTheme, changeFontSize, handleDragStop)}
-            {Body(isOverlayOpen, setOverlay, opentab, inputFile)}
+            {Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUserCode)}
             {Bottom()}
         </Stack>
           
