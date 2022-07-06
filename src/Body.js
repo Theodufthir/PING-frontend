@@ -7,9 +7,15 @@ import { Box } from "@mui/system";
 import { TextField } from '@mui/material';
 import { fontSize } from "./App";
 import Overlay from "react-overlay-component";
+import Editor from "@monaco-editor/react";
 
 
-function Body(isOverlayOpen, setOverlay, opentab, inputFile) {
+function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUserCode) {
+
+    const options = {
+        fontSize: fontSize / 2
+    };
+
     return (
         <AppBar position="static" className="body" sx={[{ height: 810 }, {p: 2}]}>
             <Stack direction='row' spacing={1} color='background'>
@@ -57,12 +63,18 @@ function Body(isOverlayOpen, setOverlay, opentab, inputFile) {
                     </Box>
                 </Stack>
                 
-                <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '80%'}, { p: 2 }, { lp: 4 }, { height: 700 }]}>
+                <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '80%'}, { p: 2 }, { lp: 4 }, { height: 700 }, { overflow: 'hidden' }]}>
                     <Typography variant="h5">file</Typography>
-                    <TextField id='texteditor' inputProps={{style: {fontSize: fontSize}}} 
-                    InputLabelProps={{style: {fontSize: fontSize}}} 
-                    variant="outlined" multiline rows={16}
-                    fullWidth='true' margin='dense'/>
+                    <Editor
+                        options={options}
+                        height="calc(100vh - 50px)"
+                        width="100%"
+                        theme={isDarkTheme ? "vs-dark" : "light"}
+                        language="java"
+                        defaultLanguage="java"
+                        defaultValue="# Enter your code here"
+                        onChange={(value) => { setUserCode(value) }}
+                    />
                 </Box>
             </Stack>
         </AppBar>
