@@ -1,4 +1,6 @@
-import {AppBar, Toolbar, Stack, Typography} from "@mui/material";
+import {AppBar, Toolbar, Stack, Typography, Link} from "@mui/material";
+
+const url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
 
 export const Bottom = () => {
     return (
@@ -13,9 +15,9 @@ export const Bottom = () => {
                             OUI & Co
                         </Typography>
                     </Stack>
-                    <Typography>
-                        Copyrights | Licence
-                    </Typography>
+                    <Link href={ url } underline="none" target="_blank" color="text.primary">
+                        {"Copyrights | Licence"}
+                    </Link>
                 </Stack>
             </Toolbar>
         </AppBar>
