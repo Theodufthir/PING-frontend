@@ -1,6 +1,7 @@
 import { Button, Input, Stack, TextField } from "@mui/material";
+import { createProject, loadProject } from "./services/projectServices";
 
-function projectFeatures() {
+function projectFeatures(setTree, setUserCode) {
     return (
         <Stack direction='column' spacing={2}>
             <Stack direction='row' spacing={1}>
@@ -9,13 +10,14 @@ function projectFeatures() {
             </Stack>
             <Stack direction='row' spacing={1}>
                 <TextField id="project" placeholder="Project Name"/>
-                <Button onClick={() => console.log(document.getElementById("project").value)} variant="contained">Create project</Button>
+                <Button onClick={() => createProject("", document.getElementById("project").value)} variant="contained">Create project</Button>
             </Stack>
             <Stack direction='row' spacing={2}>
                 <TextField id="folder" placeholder="folderpath" margin="small"/>
-                <Button onClick={() => console.log(document.getElementById("folder").value)} variant="contained">Open project</Button>
+                <Button onClick={() => { setUserCode("test"); loadProject(document.getElementById("folder").value, setTree)}} variant="contained">Open project</Button>
             </Stack>
         </Stack>
+
     );
 }
 
@@ -58,6 +60,7 @@ function gitFeatures() {
         </Stack>
     )
 }
+
 function anyFeatures() {
     return (
         <Stack direction='column' spacing={2}>

@@ -4,14 +4,13 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import ElderlyWomanIcon from '@mui/icons-material/ElderlyWoman';
 import SentimentVerySatisfiedIcon from '@mui/icons-material/SentimentVerySatisfied';
 import { Box } from "@mui/system";
-import { TextField } from '@mui/material';
 import { fontSize } from "./App";
 import Overlay from "react-overlay-component";
-import { updateTree, tree } from "./fileTree/fileNodes";
 import { projectFeatures, gitFeatures, mvnFeatures, anyFeatures } from "./Features";
 import Editor from "@monaco-editor/react";
+import FileTree from "./FileTree";
 
-function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUserCode) {
+function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, userCode, setUserCode, tree, setTree) {
 
     const options = {
         fontSize: fontSize / 2
@@ -25,7 +24,7 @@ function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUse
                         <IconButton onClick={() => setOverlay[0](true)}>
                             <InsertDriveFileIcon color='icons' fontSize='large'/>
                             <Overlay configs={{ animate: true }} isOpen={isOverlayOpen[0]} closeOverlay={() => setOverlay[0](false)}>
-                                {projectFeatures()}
+                                {projectFeatures(setTree, setUserCode)}
                             </Overlay>
                         </IconButton>
                         <IconButton onClick={() => setOverlay[1](true)}>
@@ -54,7 +53,7 @@ function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUse
                     </Box>
                     <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '75%'}, { p: 2 }, { height: 625 }]} bgcolor='background.main'>
                         <Typography variant="h5">FILES</Typography>
-                        <Box>{tree}</Box>
+                        <Box>{FileTree(tree, setUserCode)}</Box>
                     </Box>
                 </Stack>
                 
@@ -67,7 +66,7 @@ function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUse
                         theme={isDarkTheme ? "vs-dark" : "light"}
                         language="java"
                         defaultLanguage="java"
-                        defaultValue="# Enter your code here"
+                        value={userCode}
                         onChange={(value) => { setUserCode(value) }}
                     />
                 </Box>

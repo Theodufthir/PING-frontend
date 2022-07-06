@@ -18,12 +18,14 @@ function App() {
     const [isGitOpen, setGit] = useState(false)
     const [isMvnOpen, setMvn] = useState(false)
     const [isOptOpen, setOpt] = useState(false)
+    const [tree, setTree] = useState([]);
     // State variable to set users source code
-    const [userCode, setUserCode] = useState(``);
+    const [userCode, setUserCode] = useState('# Enter your code here');
     const inputFile = useRef(null);
     const isOverlayOpen = [isFileOpen, isMvnOpen, isGitOpen, isOptOpen]
     const setOverlay = [setFile, setMvn, setGit, setOpt]
     // This function is triggered when the Switch component is toggled
+
     const changeTheme = () => {
         setIsDarkTheme(!isDarkTheme);
     };
@@ -45,7 +47,7 @@ function App() {
       <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
         <Stack direction='column'>
             {Header(isDarkTheme, changeTheme, changeFontSize, handleDragStop)}
-            {Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUserCode)}
+            {Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, userCode, setUserCode, tree, setTree)}
             {Bottom()}
         </Stack>
           

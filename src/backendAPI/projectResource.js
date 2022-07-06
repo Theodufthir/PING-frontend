@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-async function createProject(projectPath, projectName) {
+async function createProjectRequest(projectPath, projectName) {
     let response = axios.post("http://localhost:8080/project",
         {
             projectName: projectName,
@@ -17,8 +17,8 @@ async function createProject(projectPath, projectName) {
     return await response;
 }
 
-async function loadProject(projectPath) {
-    let response = axios.get("http://localhost:8080/project/load/" + projectPath.replace("/", "%2F"))
+async function loadProjectRequest(projectPath) {
+    let response = axios.get("http://localhost:8080/project/load/" + projectPath.replaceAll("/", "%2F"))
         .then((res) => {
             console.log("Loaded project successfully");
             return { success: true, data: res.data };
@@ -30,7 +30,7 @@ async function loadProject(projectPath) {
     return await response;
 }
 
-async function getFileTree(projectId) {
+async function getFilesListRequest(projectId) {
     let response = axios.get("http://localhost:8080/project/" + projectId)
         .then((res) => {
             console.log("Fetched project files successfully");
@@ -44,7 +44,7 @@ async function getFileTree(projectId) {
 }
 
 export {
-    createProject,
-    loadProject,
-    getFileTree
+    createProjectRequest,
+    loadProjectRequest,
+    getFilesListRequest
 }
