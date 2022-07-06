@@ -30,7 +30,7 @@ export const darkTheme = createTheme({
             primary: '#FFFFFF'
         },
         background: {
-            main: '#5B5B5B'
+            main: '#424242'
         },
         primary: {
             main: '#898989'
