@@ -14,11 +14,11 @@ import Editor from "@monaco-editor/react";
 function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUserCode) {
 
     const options = {
-        fontSize: fontSize / 2
+        fontSize: fontSize * 2
     };
 
     return (
-        <AppBar position="static" className="body" sx={[{ height: 810 }, {p: 2}]}>
+        <AppBar position="static" className="body" sx={[{ height: 633 }, {p: 2}]}>
             <Stack direction='row' spacing={1} color='background'>
                 <Toolbar>
                     <Stack direction='column' spacing={8}>
@@ -48,18 +48,17 @@ function Body(isOverlayOpen, setOverlay, opentab, inputFile, isDarkTheme, setUse
                         </IconButton>
                     </Stack>
                 </Toolbar>
-                <Stack direction='column' spacing={1} sx={{ width: '15%' }}>
-                    <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '75%'}, { p: 2 }]} bgcolor='secondary.main'>
+                <Stack direction='column' spacing={1} sx={[{ width: '20%' }]}>
+                    <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 2}, { width: '75%'}, { p: 2 }]} bgcolor='secondary.main'>
                         <Typography variant="h5">Explorer</Typography>
                     </Box>
-                    <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '75%'}, { p: 2 }, { height: 625 }]} bgcolor='background.main'>
+                    <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 2}, { width: '75%'}, { p: 2 }, { height: 492 }]} bgcolor='background.main'>
                         <Typography variant="h5">FILES</Typography>
                         <Box>{tree}</Box>
                     </Box>
                 </Stack>
                 
-                <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 1}, { width: '80%'}, { p: 2 }, { lp: 4 }, { height: 700 }, { overflow: 'hidden' }]}>
-                    <Typography variant="h5">file</Typography>
+                <Box sx={[{ borderColor: 'icons' }, { borderRadius: '32px' }, { border: 2}, { width: '70%'}, { p: 2 }, { lp: 4 }, { height: 565 }, { overflow: 'hidden' }, { background: isDarkTheme ? "#1E1E1E" : "#FFFFFE" }]}>
                     <Editor
                         options={options}
                         height="calc(100vh - 50px)"

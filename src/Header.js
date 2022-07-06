@@ -7,7 +7,7 @@ export const Header = (isDarkTheme, changeTheme, changeFontSize, handleDragStop)
     return (
         <AppBar position='static' className='header'>
               <Toolbar>
-                <Stack direction='row' spacing={65}>
+                <Stack direction='row' spacing={45}>
                     <Stack direction='row' spacing={1}>
                         <Typography variant='h6'>
                             OUI 
@@ -22,7 +22,7 @@ export const Header = (isDarkTheme, changeTheme, changeFontSize, handleDragStop)
 
                     <Stack direction='row' spacing={0} alignItems="center">
                         <TextFieldsRoundedIcon fontSize='small'/>
-                        <Slider size='small' defaultValue={50} aria-label="Letters Size" valueLabelDisplay='auto' color='icons'
+                        <Slider size='small' defaultValue={10} aria-label="Letters Size" valueLabelDisplay='auto' color='icons'
                         onChange={ changeFontSize } onChangeCommitted={ handleDragStop } sx={{ width: 500 }}/>
                         <TextFieldsRoundedIcon fontSize='large'/>
                     </Stack>
